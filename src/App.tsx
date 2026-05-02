@@ -1,10 +1,15 @@
-import { ResizableVertical } from './components/resizeable'
+import { ResizableVertical } from './components/layout'
+import { Navbar } from './components/navbar'
+import { Main } from './components/main'
 import './App.css'
 
-function App({ children }: { children: React.ReactNode }) {
+function App() {
   return (
     <>
-      <ResizableVertical>
+      <ResizableVertical
+        navContent={<Navbar />}
+        mainContent={<Main />}
+      >
 
       </ResizableVertical>
     </>

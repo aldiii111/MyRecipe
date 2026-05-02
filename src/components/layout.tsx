@@ -4,24 +4,23 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
 
+interface Layout {
+    navContent: React.ReactNode
+    mainContent: React.ReactNode
+}
 
-
-export function ResizableVertical() {
+export function ResizableVertical({ navContent, mainContent }: Layout) {
   return (
     <ResizablePanelGroup
       orientation="vertical"
       className="min-h-screen min-w-screen"
     >
       <ResizablePanel defaultSize="8%">
-        <div className="flex h-full items-center justify-center p-6">
-          <span className="font-semibold">Header</span>
-        </div>
+        {navContent}
       </ResizablePanel>
       <ResizableHandle />
       <ResizablePanel defaultSize="92%">
-        <div className="flex h-full items-center justify-center p-6">
-          <span className="font-semibold">Content</span>
-        </div>
+        {mainContent}
       </ResizablePanel>
     </ResizablePanelGroup>
   )
