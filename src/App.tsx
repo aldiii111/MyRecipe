@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <ResizableVertical
-        navContent={<Navbar />}
+        navContent={<Navbar/>}
         mainContent={<Main />}
       >
 
