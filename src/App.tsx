@@ -1,6 +1,8 @@
-import { SidebarProvider } from "@/components/ui/sidebar"
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 import { SidebarComp } from "@/components/sidebar-comp"
+import Home from "@/page/home"
 import { useState } from "react"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import './App.css'
 
@@ -10,6 +12,7 @@ function App() {
 
   return (
     <>
+    <BrowserRouter>
       <SidebarProvider>
         <SidebarComp
           userInput={search}
@@ -17,13 +20,18 @@ function App() {
           className="px-2.5 py-5  bg-sidebar"
           SearchHandler={(e) => {
           e.preventDefault();
-          console.log("user mengetik: ", search)
-
           }}
-          
         />
+        <SidebarInset className="bg-background">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            
+          </Routes>
+          
+        </SidebarInset>
 
       </SidebarProvider>
+    </BrowserRouter>
     </>
   )
 }
