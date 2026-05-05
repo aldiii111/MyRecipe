@@ -12,26 +12,37 @@ function App() {
 
   return (
     <>
-    <BrowserRouter>
-      <SidebarProvider>
-        <SidebarComp
-          userInput={search}
-          changeInput={(e) => { setSearch(e.target.value) }}
-          className="px-2.5 py-5  bg-sidebar"
-          SearchHandler={(e) => {
-          e.preventDefault();
-          }}
-        />
-        <SidebarInset className="bg-background">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            
-          </Routes>
-          
-        </SidebarInset>
+      <BrowserRouter>
+        <SidebarProvider>
+          <SidebarComp
+            userInput={search}
+            changeInput={(e) => { setSearch(e.target.value) }}
+            className="px-2.5 py-5  bg-sidebar"
+            SearchHandler={(e) => {
+              e.preventDefault();
+            }}
+          />
+          <SidebarInset className="bg-background">
+            <Routes>
+              <Route path="/" element={<Home />} />
 
-      </SidebarProvider>
-    </BrowserRouter>
+            </Routes>
+            {/* <Routes>
+              <Route path="/anime" element={<Home />} />
+
+            </Routes>
+            <Routes>
+              <Route path="/profile" element={<Home />} />
+
+            </Routes>
+            <Routes>
+              <Route path="/settings" element={<Home />} />
+
+            </Routes> */}
+          </SidebarInset>
+
+        </SidebarProvider>
+      </BrowserRouter>
     </>
   )
 }

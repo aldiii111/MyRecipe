@@ -4,26 +4,26 @@
 
 :root {
   --font-size: 14px;
-  --background: #0B0E14;
-  --foreground: #ffffff;
-  --card: #151921;
-  --card-foreground: #ffffff;
-  --popover: #151921;
-  --popover-foreground: #ffffff;
+  --background: #ffffff;
+  --foreground: #09090b;
+  --card: #ffffff;
+  --card-foreground: #09090b;
+  --popover: #ffffff;
+  --popover-foreground: #09090b;
   --primary: #0D99FF;
   --primary-foreground: #ffffff;
-  --secondary: #1E252E;
-  --secondary-foreground: #ffffff;
-  --muted: #262E38;
-  --muted-foreground: #94A3B8;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
   --accent: #0D99FF;
   --accent-foreground: #ffffff;
-  --destructive: #EF4444;
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: rgba(13, 153, 255, 0.2);
-  --input: transparent;
-  --input-background: #1E252E;
-  --switch-background: #334155;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --input-background: #ffffff;
+  --switch-background: #e2e8f0;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
   --ring: #0D99FF;
@@ -33,13 +33,13 @@
   --chart-4: #9ED9FF;
   --chart-5: #CDEBFF;
   --radius: 0.625rem;
-  --sidebar: #11141A;
-  --sidebar-foreground: #F8FAFC;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #09090b;
   --sidebar-primary: #0D99FF;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1E252E;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: rgba(13, 153, 255, 0.15);
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #09090b;
+  --sidebar-border: #e2e8f0;
   --sidebar-ring: #0D99FF;
   
   /* Custom cinematic colors */
@@ -176,42 +176,42 @@
       font-size: var(--text-2xl);
       font-weight: var(--font-weight-medium);
       line-height: 1.5;
-      color: #ffffff;
+      color: var(--foreground);
     }
 
     h2 {
       font-size: var(--text-xl);
       font-weight: var(--font-weight-medium);
       line-height: 1.5;
-      color: #ffffff;
+      color: var(--foreground);
     }
 
     h3 {
       font-size: var(--text-lg);
       font-weight: var(--font-weight-medium);
       line-height: 1.5;
-      color: #ffffff;
+      color: var(--foreground);
     }
 
     h4 {
       font-size: var(--text-base);
       font-weight: var(--font-weight-medium);
       line-height: 1.5;
-      color: #ffffff;
+      color: var(--foreground);
     }
 
     p {
       font-size: var(--text-base);
       font-weight: var(--font-weight-normal);
       line-height: 1.5;
-      color: #ffffff;
+      color: var(--foreground);
     }
 
     label {
       font-size: var(--text-base);
       font-weight: var(--font-weight-medium);
       line-height: 1.5;
-      color: #ffffff;
+      color: var(--foreground);
     }
 
     button {
@@ -224,7 +224,7 @@
       font-size: var(--text-base);
       font-weight: var(--font-weight-normal);
       line-height: 1.5;
-      color: #ffffff;
+      color: var(--foreground);
     }
   }
 }

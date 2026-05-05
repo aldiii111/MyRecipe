@@ -10,10 +10,7 @@ import {
 
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
-import { Search } from "lucide-react"
-import { House } from "lucide-react"
-import { Film } from "lucide-react"
-import { Settings } from "lucide-react"
+import { Search, House, ChefHat, Heart, Settings, Utensils } from "lucide-react"
 import { Link } from "react-router-dom"
 
 interface sideCompProps {
@@ -27,49 +24,47 @@ export function SidebarComp({ className, SearchHandler, userInput, changeInput }
     return (
         <Sidebar className={className}>
             <SidebarHeader className="gap-1 flex flex-col">
-                <div className="flex flex-row gap-0.5"><img src="../src/assets/letter-w (1).png" className="w-10 h-10" /><h2 className="text-2xl mt-1 font-bold">ebFlix</h2></div>
-                <SidebarGroupLabel className="px-0 text-md">Watch Your Favorite Anime</SidebarGroupLabel>
+                <div className="flex flex-row gap-0.5"><ChefHat className="w-8 h-8 text-primary mt-1" /><h2 className="text-2xl mt-1 font-bold text-foreground">MyRecipe</h2></div>
+                <SidebarGroupLabel className="px-0 text-md text-muted-foreground">Temukan Resep Inspiratif</SidebarGroupLabel>
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup className="mt-3">
                     <form className="relative group" onSubmit={SearchHandler}>
-                        <SidebarInput className="h-11 pl-10" value={userInput} placeholder="  Search Anime..." onChange={changeInput} />
+                        <SidebarInput className="h-11 pl-10 bg-background text-foreground border-border" value={userInput} placeholder="  Cari resep (contoh: Chicken)..." onChange={changeInput} />
                         <Button size="icon" variant="ghost" className="absolute left-2 top-1/2 -translate-y-1/2 bg-transparent hover:bg-transparent border-none" type="submit">
                             <Search className="w-5 h-5 text-muted-foreground" />
                         </Button>
                     </form>
-                    <SidebarMenuButton className="mt-9 pl-4 gap-4 flex" size="lg" variant="outline2" asChild>
+                    <SidebarMenuButton className="mt-9 pl-4 gap-4 flex text-foreground hover:text-primary" size="lg" variant="outline2" asChild>
                         <Link to="/">
                             <House />Home
                         </Link>
                     </SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex" size="lg" variant="outline2" asChild>
-                        <Link to="/anime">
-                            <Film />Anime
+                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-foreground hover:text-primary" size="lg" variant="outline2" asChild>
+                        <Link to="/kategori">
+                            <Utensils />Kategori
                         </Link>
                     </SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex" size="lg" variant="outline2" asChild>
-                        <Link to="/profile">
-                            <House />Profile
+                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-foreground hover:text-primary" size="lg" variant="outline2" asChild>
+                        <Link to="/favorit">
+                            <Heart />Favorit
                         </Link>
                     </SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex" size="lg" variant="outline2" asChild>
+                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-foreground hover:text-primary" size="lg" variant="outline2" asChild>
                         <Link to="/settings">
-                            <Settings />Settings
+                            <Settings />Pengaturan
                         </Link>
                     </SidebarMenuButton>
                     <Separator className="my-9" />
-                    <h1 className="text-sidebar-foreground/50 text-base font-bold">GENRES</h1>
+                    <h1 className="text-primary text-base font-bold tracking-wider">KATEGORI POPULER</h1>
                 </SidebarGroup>
-                <SidebarGroup className="overflow-y-hidden">
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex" size="lg" variant="outline2">All Anime</SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex" size="lg" variant="outline2">Action</SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex" size="lg" variant="outline2">Adventure</SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex" size="lg" variant="outline2">Comedy</SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex" size="lg" variant="outline2">Fantasy</SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex" size="lg" variant="outline2">Historical</SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex" size="lg" variant="outline2">Horror</SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex" size="lg" variant="outline2">Romance</SidebarMenuButton>
+                <SidebarGroup>
+                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-muted-foreground hover:text-foreground" size="lg" variant="outline2">Olahan Ayam</SidebarMenuButton>
+                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-muted-foreground hover:text-foreground" size="lg" variant="outline2">Daging Sapi</SidebarMenuButton>
+                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-muted-foreground hover:text-foreground" size="lg" variant="outline2">Seafood</SidebarMenuButton>
+                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-muted-foreground hover:text-foreground" size="lg" variant="outline2">Dessert & Kue</SidebarMenuButton>
+                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-muted-foreground hover:text-foreground" size="lg" variant="outline2">Menu Sarapan</SidebarMenuButton>
+                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-muted-foreground hover:text-foreground" size="lg" variant="outline2">Vegetarian</SidebarMenuButton>
                 </SidebarGroup>
             </SidebarContent>
         </Sidebar>
