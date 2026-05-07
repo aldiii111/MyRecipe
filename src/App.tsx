@@ -4,7 +4,7 @@ import Home from "@/page/home"
 import { useState, useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import type { Meal } from "./types/meal"
-import { getIngredient } from "./types/mealHealper"
+// import { getIngredient } from "./types/mealHealper"
 
 import './App.css'
 

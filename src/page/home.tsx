@@ -1,5 +1,5 @@
 import type { Meal } from "@/types/meal";
-import { getIngredient } from "@/types/mealHealper";
+// import { getIngredient } from "@/types/mealHealper";
 import { Card, Hero, CategoryBar } from "@/components/component";
 
 interface homeProp {
