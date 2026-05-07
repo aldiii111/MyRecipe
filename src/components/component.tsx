@@ -21,7 +21,7 @@ interface sideCompProps {
     changeInput: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export function SidebarComp({ className, SearchHandler, userInput, changeInput}: sideCompProps) {
+export function SidebarComp({ className, SearchHandler, userInput, changeInput }: sideCompProps) {
     const location = useLocation();
 
     const menuItems = [
@@ -39,21 +39,21 @@ export function SidebarComp({ className, SearchHandler, userInput, changeInput}:
             <SidebarContent>
                 <SidebarGroup className="mt-3">
                     <form className="relative group" onSubmit={SearchHandler}>
-                        <SidebarInput className="h-11 pl-10 bg-background text-foreground border-border" value={userInput} placeholder="  Search recipes (e.g., Chicken)..." onChange={changeInput}/>
+                        <SidebarInput className="h-11 pl-10 bg-background text-foreground border-border" value={userInput} placeholder="  Search recipes (e.g., Chicken)..." onChange={changeInput} />
                         <Button size="icon" variant="ghost" className="absolute left-2 top-1/2 -translate-y-1/2 bg-transparent hover:bg-transparent border-none" type="submit">
                             <Search className="w-5 h-5 text-muted-foreground" />
                         </Button>
                     </form>
-                    
+
                     <div className="mt-9 space-y-1">
                         {menuItems.map((item) => {
                             const isActive = location.pathname === item.to;
                             return (
-                                <SidebarMenuButton 
+                                <SidebarMenuButton
                                     key={item.name}
-                                    className={`relative pl-4 gap-4 flex transition-all duration-200 group ${isActive ? 'bg-primary/10 text-primary font-bold' : 'text-muted-foreground hover:text-primary hover:bg-primary/5'}`} 
-                                    size="lg" 
-                                    variant="outline2" 
+                                    className={`relative pl-4 gap-4 flex transition-all duration-200 group ${isActive ? 'bg-primary/10 text-primary font-bold' : 'text-muted-foreground hover:text-primary hover:bg-primary/5'}`}
+                                    size="lg"
+                                    variant="outline2"
                                     asChild
                                 >
                                     <Link to={item.to}>
@@ -108,12 +108,12 @@ export function Card({ img, name, category, key }: CardProps) {
             </div>
 
             <div className="p-5 pt-15 absolute bottom-0 bg-linear-to-t from-black via-black/75 to-transparent w-full">
-                <span className="text-[10px] font-black uppercase tracking-[0.15em] text-primary bg-primary/20 px-2 py-1 rounded-md">
-                    {category}
-                </span>
                 <h3 className="mt-3 font-bold text-lg text-background leading-tight line-clamp-2 group-hover:text-primary transition-colors">
                     {name}
                 </h3>
+                <span className="text-[10px] font-black uppercase tracking-[0.15em] text-primary bg-primary/20 px-2 py-1 rounded-md">
+                    {category}
+                </span>
             </div>
         </div>
     )
@@ -122,8 +122,8 @@ export function Card({ img, name, category, key }: CardProps) {
 export function Hero() {
     return (
         <div className="relative w-full h-[350px] rounded-3xl overflow-hidden mb-12 shadow-2xl shadow-primary/10">
-            <img 
-                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop" 
+            <img
+                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop"
                 className="absolute inset-0 w-full h-full object-cover"
                 alt="Hero Background"
             />
@@ -167,7 +167,7 @@ export function CategoryBar() {
             {categories.map((cat, index) => {
                 const isActive = active === cat.name;
                 return (
-                    <button 
+                    <button
                         key={index}
                         onClick={() => setActive(cat.name)}
                         className={`flex items-center gap-3 px-6 py-2.5 rounded-full border whitespace-nowrap transition-all duration-200 h-14 font-bold text-sm ${isActive ? 'bg-primary text-white border-primary shadow-md shadow-primary/30' : 'bg-card text-muted-foreground border-border hover:border-primary hover:text-primary'}`}
