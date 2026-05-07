@@ -7,7 +7,7 @@
     "types": ["vite/client"],
     "skipLibCheck": true,
     "baseUrl": ".",
-    "rootDir": "./src",
+    "ignoreDeprecations": "6.0",
     "paths": {
     "@/*": [
       "./src/*"
