@@ -37,13 +37,10 @@ function App() {
           />
           <SidebarInset className="bg-background">
             <Routes>
-              <Route path="/" element={<Home meals={datas}/>} />
+              <Route path="/" element={<Home meals={datas} />} />
 
             </Routes>
-            {/* <Routes>
-              <Route path="/categories" element={<Categories />} />
-
-            </Routes>
+            {/*
             <Routes>
               <Route path="/favorite" element={<Favorite />} />
 

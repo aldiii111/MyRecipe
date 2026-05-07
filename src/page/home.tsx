@@ -19,9 +19,11 @@ export default function Home({ meals }: homeProp) {
 
       <div className="grid grid-cols-4 gap-8 mx-auto w-[85%]">
         {/* <p>data dapet: {meals?.length || 0}</p> */}
-        {meals?.map((meal) => {
+        {meals?.map((meal, index) => {
+          const id = meal.idMeal
           return (
             <Card
+              key={id && meal.idMeal ? index : null}
               img={meal.strMealThumb}
               name={meal.strMeal}
               category={meal.strCategory}

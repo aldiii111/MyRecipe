@@ -90,11 +90,12 @@ interface CardProps {
     img: string;
     name: string;
     category: string;
+    key: number | null;
 }
 
-export function Card({ img, name, category }: CardProps) {
+export function Card({ img, name, category, key }: CardProps) {
     return (
-        <div id="card" className="relative bg-card rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group cursor-pointer border border-transparent hover:border-primary/10">
+        <div key={key} id="card" className="relative bg-card rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group cursor-pointer border border-transparent hover:border-primary/10">
             <div className="relative">
                 <img
                     src={img}
