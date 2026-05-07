@@ -231,4 +231,9 @@
 
 html {
   font-size: var(--font-size);
+  scroll-behavior: smooth;
+}
+
+#card {
+  scroll-margin-top: 100px;
 }
