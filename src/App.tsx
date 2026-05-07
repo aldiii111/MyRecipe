@@ -1,7 +1,7 @@
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
-import { SidebarComp } from "@/components/sidebar-comp"
+import { SidebarComp } from "@/components/component"
 import Home from "@/page/home"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import './App.css'
@@ -9,6 +9,17 @@ import './App.css'
 function App() {
 
   const [search, setSearch] = useState("")
+  const [datas, setdatas] = useState()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
+      const result = await response.json()
+      setdatas(result)
+    }
+    console.log(datas)
+    fetchData()
+  }, [search])
 
   return (
     <>
@@ -28,15 +39,15 @@ function App() {
 
             </Routes>
             {/* <Routes>
-              <Route path="/anime" element={<Home />} />
+              <Route path="/categories" element={<Categories />} />
 
             </Routes>
             <Routes>
-              <Route path="/profile" element={<Home />} />
+              <Route path="/favorite" element={<Favorite />} />
 
             </Routes>
             <Routes>
-              <Route path="/settings" element={<Home />} />
+              <Route path="/settings" element={<Settings />} />
 
             </Routes> */}
           </SidebarInset>
