@@ -4,9 +4,10 @@ import { Card, Hero, CategoryBar } from "@/components/component";
 
 interface homeProp {
   meals: Meal[];
+  loading: React.ReactNode;
 }
 
-export default function Home({ meals }: homeProp) {
+export function Home({ meals, loading }: homeProp) {
   // const ingredient = getIngredient(meals);
 
   return (
@@ -18,12 +19,16 @@ export default function Home({ meals }: homeProp) {
       </div>
 
       <div className="grid grid-cols-4 gap-8 mx-auto w-[85%]">
-        {/* <p>data dapet: {meals?.length || 0}</p> */}
-        {meals?.map((meal, index) => {
+        {!meals && <div className="col-span-full mx-auto">{loading}</div>}
+        {meals && meals?.map((meal, index) => {
+          const onkliks = () => {
+            alert(index+1)
+          }
           const id = meal.idMeal
           return (
             <Card
               key={id && meal.idMeal ? index : null}
+              onklik={onkliks}
               img={meal.strMealThumb}
               name={meal.strMeal}
               category={meal.strCategory}

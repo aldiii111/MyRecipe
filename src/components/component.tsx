@@ -10,9 +10,8 @@ import {
 
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
-import { Search, House, ChefHat, Heart, Settings, Utensils, ArrowRight, EggFried, Fish, Beef, Dessert, Vegan, Shell } from "lucide-react"
+import { Search, House, ChefHat, Heart, Settings, Utensils, ArrowRight, EggFried, Fish, Beef, Dessert, Vegan } from "lucide-react"
 import { Link, useLocation } from "react-router-dom"
-import { useState } from "react"
 
 interface sideCompProps {
     className?: string
@@ -21,7 +20,7 @@ interface sideCompProps {
     changeInput: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export function SidebarComp({ className, SearchHandler, userInput, changeInput}: sideCompProps) {
+export function SidebarComp({ className, SearchHandler, userInput, changeInput }: sideCompProps) {
     const location = useLocation();
 
     const menuItems = [
@@ -29,6 +28,15 @@ export function SidebarComp({ className, SearchHandler, userInput, changeInput}:
         { name: "Favorites", to: "/favorites", icon: <Heart /> },
         { name: "Settings", to: "/settings", icon: <Settings /> },
     ];
+
+    const categories = [
+        { name: "Breakfast", to: "/categories/breakfast", icon: <EggFried /> },
+        { name: "Seafood", to: "/categories/seafood", icon: <Fish /> },
+        { name: "Meat", to: "/categories/meat", icon: <Beef /> },
+        { name: "Dessert", to: "/categories/dessert", icon: <Dessert /> },
+        { name: "Vegan", to: "/categories/vegan", icon: <Vegan /> },
+        { name: "Pasta", to: "/categories/pasta", icon: <Utensils /> },
+    ]
 
     return (
         <Sidebar className={className}>
@@ -39,21 +47,21 @@ export function SidebarComp({ className, SearchHandler, userInput, changeInput}:
             <SidebarContent>
                 <SidebarGroup className="mt-3">
                     <form className="relative group" onSubmit={SearchHandler}>
-                        <SidebarInput className="h-11 pl-10 bg-background text-foreground border-border" value={userInput} placeholder="  Search recipes (e.g., Chicken)..." onChange={changeInput}/>
+                        <SidebarInput className="h-11 pl-10 bg-background text-foreground border-border" value={userInput} placeholder="  Search recipes (e.g., Chicken)..." onChange={changeInput} />
                         <Button size="icon" variant="ghost" className="absolute left-2 top-1/2 -translate-y-1/2 bg-transparent hover:bg-transparent border-none" type="submit">
                             <Search className="w-5 h-5 text-muted-foreground" />
                         </Button>
                     </form>
-                    
+
                     <div className="mt-9 space-y-1">
                         {menuItems.map((item) => {
                             const isActive = location.pathname === item.to;
                             return (
-                                <SidebarMenuButton 
+                                <SidebarMenuButton
                                     key={item.name}
-                                    className={`relative pl-4 gap-4 flex transition-all duration-200 group ${isActive ? 'bg-primary/10 text-primary font-bold' : 'text-muted-foreground hover:text-primary hover:bg-primary/5'}`} 
-                                    size="lg" 
-                                    variant="outline2" 
+                                    className={`relative pl-4 gap-4 flex transition-all duration-200 group ${isActive ? 'bg-primary/10 text-primary font-bold' : 'text-muted-foreground hover:text-primary hover:bg-primary/5'}`}
+                                    size="lg"
+                                    variant="outline2"
                                     asChild
                                 >
                                     <Link to={item.to}>
@@ -71,13 +79,27 @@ export function SidebarComp({ className, SearchHandler, userInput, changeInput}:
                     <Separator className="my-9" />
                     <h1 className="text-primary text-base font-bold tracking-wider uppercase">Popular Categories</h1>
                 </SidebarGroup>
-                <SidebarGroup>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-muted-foreground hover:text-foreground" size="lg" variant="outline2">Chicken Dishes</SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-muted-foreground hover:text-foreground" size="lg" variant="outline2">Beef & Meat</SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-muted-foreground hover:text-foreground" size="lg" variant="outline2">Seafood</SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-muted-foreground hover:text-foreground" size="lg" variant="outline2">Dessert & Cakes</SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-muted-foreground hover:text-foreground" size="lg" variant="outline2">Breakfast Menu</SidebarMenuButton>
-                    <SidebarMenuButton className="mt-3 pl-4 gap-4 flex text-muted-foreground hover:text-foreground" size="lg" variant="outline2">Vegetarian</SidebarMenuButton>
+                <SidebarGroup className="space-y-1">
+                    {categories.map((cat) => {
+                        const isActive = location.pathname === cat.to;
+                        return (
+                            <SidebarMenuButton
+                                key={cat.name}
+                                className={`relative pl-4 gap-4 flex transition-all duration-200 group ${isActive ? 'bg-primary/10 text-primary font-bold' : 'text-muted-foreground hover:text-primary hover:bg-primary/5'}`}
+                                size="lg"
+                                variant="outline2"
+                                asChild
+                            >
+                                <Link to={cat.to}>
+                                    {isActive && <div className="absolute left-0 w-1 h-6 bg-primary rounded-r-full" />}
+                                    <div className={`${isActive ? 'text-primary' : 'text-muted-foreground group-hover:text-primary'}`}>
+                                        {cat.icon}
+                                    </div>
+                                    {cat.name}
+                                </Link>
+                            </SidebarMenuButton>
+                        )
+                    })}
                 </SidebarGroup>
             </SidebarContent>
         </Sidebar>
@@ -91,16 +113,17 @@ interface CardProps {
     name: string;
     category: string;
     key: number | null;
+    onklik: () => void;
 }
 
-export function Card({ img, name, category, key }: CardProps) {
+export function Card({ img, name, category, key, onklik }: CardProps) {
     return (
-        <div key={key} id="card" className="relative bg-card rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group cursor-pointer border border-transparent hover:border-primary/10">
+        <div key={key} onClick={onklik} id="card" className="relative bg-card rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group cursor-pointer border border-transparent hover:border-primary/10">
             <div className="relative">
                 <img
                     src={img}
                     alt={name}
-                    className="w-full aspect-[4/5] object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full aspect-4/5 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <button className="absolute top-3 right-3 bg-white/40 backdrop-blur-md p-2.5 rounded-full doubleClick:bg-white transition-all duration-300 shadow-sm border border-white/20">
                     <Heart className="w-5 h-5 text-white group-hover:text-red-500 fill-transparent active:fill-red-500 transition-all" />
@@ -122,8 +145,8 @@ export function Card({ img, name, category, key }: CardProps) {
 export function Hero() {
     return (
         <div className="relative w-full h-[350px] rounded-3xl overflow-hidden mb-12 shadow-2xl shadow-primary/10">
-            <img 
-                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop" 
+            <img
+                src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop"
                 className="absolute inset-0 w-full h-full object-cover"
                 alt="Hero Background"
             />
@@ -149,31 +172,32 @@ export function Hero() {
     )
 }
 
-const categories = [
-    { name: "All Recipes", icon: <Utensils className="w-3.5 h-3.5" /> },
-    { name: "Breakfast", icon: <EggFried className="w-3.5 h-3.5" /> },
-    { name: "Seafood", icon: <Fish className="w-3.5 h-3.5" /> },
-    { name: "Meat", icon: <Beef className="w-3.5 h-3.5" /> },
-    { name: "Dessert", icon: <Dessert className="w-3.5 h-3.5" /> },
-    { name: "Vegan", icon: <Vegan className="w-3.5 h-3.5" /> },
-    { name: "Pasta", icon: <Shell className="w-3.5 h-3.5" /> },
-]
 
 export function CategoryBar() {
-    const [active, setActive] = useState("All Recipes");
+    const location = useLocation();
+
+    const categories = [
+        { name: "Breakfast", to: "/categories/breakfast", icon: <EggFried /> },
+        { name: "Seafood", to: "/categories/seafood", icon: <Fish /> },
+        { name: "Meat", to: "/categories/meat", icon: <Beef /> },
+        { name: "Dessert", to: "/categories/dessert", icon: <Dessert /> },
+        { name: "Vegan", to: "/categories/vegan", icon: <Vegan /> },
+        { name: "Pasta", to: "/categories/pasta", icon: <Utensils /> },
+    ]
 
     return (
-        <div className="flex items-center gap-3 overflow-x-auto pb-4 no-scrollbar mb-10">
+        <div className="flex items-center gap-3 overflow-x-auto p-2 no-scrollbar mb-10">
             {categories.map((cat, index) => {
-                const isActive = active === cat.name;
+                const isActive = location.pathname === cat.to;
                 return (
-                    <button 
+                    <button
                         key={index}
-                        onClick={() => setActive(cat.name)}
-                        className={`flex items-center gap-3 px-6 py-2.5 rounded-full border whitespace-nowrap transition-all duration-200 h-14 font-bold text-sm ${isActive ? 'bg-primary text-white border-primary shadow-md shadow-primary/30' : 'bg-card text-muted-foreground border-border hover:border-primary hover:text-primary'}`}
+                        className={`flex items-center gap-3 px-6 py-2.5 active:bg-primary active:text-white active:border-primary active:shadow-md active:shadow-primary/30 hover:scale-105 active:scale-95 rounded-full border whitespace-nowrap transition-all duration-150 h-14 font-bold text-sm ${isActive ? 'bg-primary text-white border-primary shadow-md shadow-primary/30' : 'bg-card text-muted-foreground border-border hover:border-primary hover:text-primary'}`}
                     >
-                        <span className="text-base">{cat.icon}</span>
-                        {cat.name}
+                        <Link to={cat.to} className="flex items-center gap-3">
+                            <span className="text-base">{cat.icon}</span>
+                            {cat.name}
+                        </Link>
                     </button>
                 )
             })}
