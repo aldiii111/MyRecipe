@@ -11,7 +11,7 @@ export function Home({ meals, loading }: homeProp) {
   // const ingredient = getIngredient(meals);
 
   return (
-    <main className="min-h-screen w-full overflow-y-scroll">
+    <main className="min-h-screen pb-10 w-full overflow-y-scroll">
       <div className="w-[85%] mx-auto py-10">
         <Hero />
         <CategoryBar />
@@ -38,4 +38,13 @@ export function Home({ meals, loading }: homeProp) {
       </div>
     </main>
   );
+}
+
+export function Favorite() {
+
+  return (
+    <main className="">
+      <p>yahaha</p>
+    </main>
+  )
 }

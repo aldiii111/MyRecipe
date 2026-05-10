@@ -1,6 +1,6 @@
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 import { SidebarComp } from "@/components/component"
-import { Home } from "@/page/main"
+import { Home, Favorite } from "@/page/main"
 import { useState, useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import type { Meal } from "./types/meal"
@@ -50,24 +50,22 @@ function App() {
               <Home loading={<Spinner />} meals={null} />
             )}
             {error && <p>{error}</p>}
-            {!isLoading && !error && (
-              <Routes>
-                <Route path="/" element={<Home meals={datas} loading={null} />} />
-
-              </Routes>
-            )}
             {!isLoading && !error && !datas && (
               <h1>gada {search}</h1>
             )}
+            {!isLoading && !error && (
+              <Routes>
+                <Route path="/" element={<Home meals={datas} loading={null} />} />
+                <Route path="/favorites" element={<Favorite />} />
+                {/* <Route path="/settings" element={<Settings />} /> */}
+              </Routes>
+            // <Routes>
+            //   <Route path="/settings" element={<Settings />} />
 
-            {/* <Routes>
-              <Route path="/favorites" element={<Favorite />} />
+            // </Routes>
+            )}
 
-            </Routes>
-            <Routes>
-              <Route path="/settings" element={<Settings />} />
 
-            </Routes> */}
           </SidebarInset>
 
         </SidebarProvider>

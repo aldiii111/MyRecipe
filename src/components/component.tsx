@@ -69,7 +69,7 @@ export function SidebarComp({ className, SearchHandler, userInput, changeInput }
                                         <div className={`${isActive ? 'text-primary' : 'text-muted-foreground group-hover:text-primary'}`}>
                                             {item.icon}
                                         </div>
-                                        {item.name}
+                                        <p className="text-muted-foreground font-bold text-md">{item.name}</p>
                                     </Link>
                                 </SidebarMenuButton>
                             )
@@ -95,7 +95,7 @@ export function SidebarComp({ className, SearchHandler, userInput, changeInput }
                                     <div className={`${isActive ? 'text-primary' : 'text-muted-foreground group-hover:text-primary'}`}>
                                         {cat.icon}
                                     </div>
-                                    {cat.name}
+                                    <p className="text-muted-foreground font-bold text-md">{cat.name}</p>
                                 </Link>
                             </SidebarMenuButton>
                         )
