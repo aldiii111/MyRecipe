@@ -1,13 +1,13 @@
 import type { Meal } from "@/types/meal";
 // import { getIngredient } from "@/types/mealHealper";
 import { Card, Hero, CategoryBar } from "@/components/component";
+import { Spinner } from "@/components/ui/spinner";
 
 interface homeProp {
-  meals: Meal[];
-  loading: React.ReactNode;
+  meals?: Meal[] | null;
 }
 
-export function Home({ meals, loading }: homeProp) {
+export function Home({ meals}: homeProp) {
   // const ingredient = getIngredient(meals);
 
   return (
@@ -19,7 +19,7 @@ export function Home({ meals, loading }: homeProp) {
       </div>
 
       <div className="grid grid-cols-4 gap-8 mx-auto w-[85%]">
-        {!meals && <div className="col-span-full mx-auto">{loading}</div>}
+        {!meals && <div className="col-span-full mx-auto"><Spinner/></div>}
         {meals && meals?.map((meal, index) => {
           const onkliks = () => {
             alert(index+1)

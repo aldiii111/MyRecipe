@@ -4,7 +4,6 @@ import { Home, Favorite } from "@/page/main"
 import { useState, useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import type { Meal } from "./types/meal"
-import { Spinner } from "./components/ui/spinner"
 // import { getIngredient } from "./types/mealHealper"
 
 import './App.css'
@@ -47,7 +46,7 @@ function App() {
           />
           <SidebarInset className="bg-background">
             {isLoading && (
-              <Home loading={<Spinner />} meals={undefined} />
+              <Home meals={null} />
             )}
             {error && <p>{error}</p>}
             {!isLoading && !error && !datas && (
@@ -55,7 +54,7 @@ function App() {
             )}
             {!isLoading && !error && (
               <Routes>
-                <Route path="/" element={<Home meals={datas} loading={null} />} />
+                <Route path="/" element={<Home meals={datas}/>} />
                 <Route path="/favorites" element={<Favorite />} />
                 {/* <Route path="/settings" element={<Settings />} /> */}
               </Routes>
