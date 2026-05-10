@@ -1,12 +1,12 @@
 
 
 
-interface detailProps {
-    id: string;
-}
+// interface detailProps {
+//     id: string;
+// }
 
-export default function Detail({id}: detailProps) {
-    return (
-        <div>{id}</div>
-    )
-}
+// export default function Detail({id}: detailProps) {
+//     return (
+//         <div>{id}</div>
+//     )
+// }

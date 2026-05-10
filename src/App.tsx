@@ -47,7 +47,7 @@ function App() {
           />
           <SidebarInset className="bg-background">
             {isLoading && (
-              <Home loading={<Spinner />} meals={null} />
+              <Home loading={<Spinner />} meals={undefined} />
             )}
             {error && <p>{error}</p>}
             {!isLoading && !error && !datas && (
