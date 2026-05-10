@@ -7,6 +7,6 @@ interface detailProps {
 
 export default function Detail({id}: detailProps) {
     return (
-        <></>
+        <div>{id}</div>
     )
 }
