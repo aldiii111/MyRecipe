@@ -190,15 +190,14 @@ export function CategoryBar() {
             {categories.map((cat, index) => {
                 const isActive = location.pathname === cat.to;
                 return (
-                    <button
-                        key={index}
-                        className={`flex items-center gap-3 px-6 py-2.5 active:bg-primary active:text-white active:border-primary active:shadow-md active:shadow-primary/30 hover:scale-105 active:scale-95 rounded-full border whitespace-nowrap transition-all duration-150 h-14 font-bold text-sm ${isActive ? 'bg-primary text-white border-primary shadow-md shadow-primary/30' : 'bg-card text-muted-foreground border-border hover:border-primary hover:text-primary'}`}
-                    >
-                        <Link to={cat.to} className="flex items-center gap-3">
+                    <Link to={cat.to}>
+                        <Button
+                            key={index}
+                            className={`flex items-center gap-3 px-6 py-2.5 active:bg-primary active:text-white active:border-primary active:shadow-md active:shadow-primary/30 hover:scale-105 transition-transform rounded-full border whitespace-nowrap duration-150 h-14 font-bold text-sm ${isActive ? 'bg-primary text-white border-primary shadow-md shadow-primary/30' : 'bg-card text-muted-foreground border-border hover:border-primary hover:text-primary'}`}>
                             <span className="text-base">{cat.icon}</span>
                             {cat.name}
-                        </Link>
-                    </button>
+                        </Button>
+                    </Link>
                 )
             })}
         </div>

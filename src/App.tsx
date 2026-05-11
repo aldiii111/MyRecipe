@@ -1,6 +1,6 @@
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 import { SidebarComp } from "@/components/component"
-import { Home, Favorite } from "@/page/main"
+import { Home, Favorite,Settings,ErrorView } from "@/page/listpage"
 import { useState, useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import type { Meal } from "./types/meal"
@@ -48,7 +48,7 @@ function App() {
             {isLoading && (
               <Home meals={null} />
             )}
-            {error && <p>{error}</p>}
+            {error && (<ErrorView message={null} retry={() => setIsLoading(true)} />)}
             {!isLoading && !error && !datas && (
               <h1>gada {search}</h1>
             )}
@@ -56,7 +56,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home meals={datas}/>} />
                 <Route path="/favorites" element={<Favorite />} />
-                {/* <Route path="/settings" element={<Settings />} /> */}
+                <Route path="/settings" element={<Settings />} />
               </Routes>
             // <Routes>
             //   <Route path="/settings" element={<Settings />} />
