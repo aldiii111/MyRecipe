@@ -7,6 +7,7 @@ import { ErrorView } from "@/page/ErrorView"
 import { useState, useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import type { Meal } from "./types/meal"
+import Detail from "@/page/Detail"
 // import { getIngredient } from "./types/mealHealper"
 
 import './App.css'
@@ -48,7 +49,7 @@ function App() {
             }}
           />
           <SidebarInset className="bg-background">
-            {isLoading && (
+            {isLoading && !error && (
               <Home meals={null} />
             )}
             {error && (<ErrorView message={null} retry={() => setIsLoading(true)} />)}
@@ -57,14 +58,11 @@ function App() {
             )}
             {!isLoading && !error && (
               <Routes>
-                <Route path="/" element={<Home meals={datas}/>} />
-                <Route path="/favorites" element={<Favorite />} />
+                <Route path="/" element={<Home meals={datas} />} />
+                <Route path="/favorites" element={<Favorite meals={datas} />} />
                 <Route path="/settings" element={<Settings />} />
+                <Route path="/detail/:id" element={<Detail />} />
               </Routes>
-            // <Routes>
-            //   <Route path="/settings" element={<Settings />} />
-
-            // </Routes>
             )}
 
 
